@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_quill', # quill field for text fields admin panel
     'main.apps.MainConfig',
 ]
 
