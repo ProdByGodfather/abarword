@@ -45,7 +45,7 @@
                                         </ul>
                                     </div>
                                     <div class="entry__excerpt">
-                                        <p>{{ i.body.html|safe }}</p>
+                                        <p>{{ i.description }}</p>
                                     </div>
                                 </div>
                             </article>
@@ -79,11 +79,12 @@
         <!-- Widget Recommended (Rating) -->
         <aside class="widget widget-rating-posts">
             <h4 class="widget-title">منتخب سردبیر</h4>
+            {% for i in best_posts %}
             <article class="entry">
                 <div class="entry__img-holder">
                     <a href="single-post.html">
                         <div class="thumb-container thumb-60">
-                            <img data-src="img/content/thumb/post-9.jpg" src="img/content/thumb/post-9.jpg" class="entry__img lazyloaded" alt="">
+                            <img src="{% if i.image.url == '' %}{% static '/img/empty.png' %}{% else %}{{ i.image.url }}{% endif %}" class="entry__img lazyloaded" alt="">
                         </div>
                     </a>
                 </div>
@@ -92,43 +93,20 @@
                     <div class="entry__header">
 
                         <h2 class="entry__title">
-                            <a href="single-post.html">بهترین کتاب‌های کودک و نوجوان برای تربیت فرزندان موفق</a>
+                            <a href="single-post.html">{{ i.title }}</a>
                         </h2>
                         <ul class="entry__meta">
                             
                             <li class="entry__meta-date">
-                                ۴ اردیبهشت ۱۳۹۸
+                                {{ i.date }}
                             </li>
                         </ul>
                         
                     </div>
                 </div>
             </article>
-            <article class="entry">
-                <div class="entry__img-holder">
-                    <a href="single-post.html">
-                        <div class="thumb-container thumb-60">
-                            <img data-src="img/content/thumb/post-8.jpg" src="img/content/thumb/post-8.jpg" class="entry__img lazyloaded" alt="">
-                        </div>
-                    </a>
-                </div>
-
-                <div class="entry__body">
-                    <div class="entry__header">
-
-                        <h2 class="entry__title">
-                            <a href="single-post.html">گوشی تاشو هواوی میت ایکس در تاریخ مقرر عرضه می‌شود</a>
-                        </h2>
-                        <ul class="entry__meta">
-                            
-                            <li class="entry__meta-date">
-                                ۴ اردیبهشت ۱۳۹۸
-                            </li>
-                        </ul>
-                        
-                    </div>
-                </div>
-            </article>
+            
+            {% endfor %}
         </aside> <!-- end widget recommended (rating) -->
     </aside>
 </div>

@@ -18,6 +18,7 @@ class Category(models.Model):
 class Posts(models.Model):
     title = models.CharField(verbose_name="موضوع", max_length=50)
     slug = models.SlugField(verbose_name="آدرس", max_length=50,unique=True)
+    description = models.TextField(verbose_name="توضیحات کوتاه",blank=True,null=True)
     body = QuillField(verbose_name="متن")
     category = models.ForeignKey(Category, verbose_name="دسته بندی", on_delete=models.CASCADE)
     date = models.DateField(verbose_name="تاریخ ایجاد", auto_now=True)
