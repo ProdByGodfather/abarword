@@ -20,8 +20,9 @@ class Posts(models.Model):
     slug = models.SlugField(verbose_name="آدرس", max_length=50,unique=True)
     body = QuillField(verbose_name="متن")
     category = models.ForeignKey(Category, verbose_name="دسته بندی", on_delete=models.CASCADE)
-    date = models.DateTimeField(verbose_name="تاریخ ایجاد", auto_now=False)
+    date = models.DateField(verbose_name="تاریخ ایجاد", auto_now=True)
     image = models.ImageField(verbose_name="عکس", upload_to="posts/%m",null=True,blank=True)
+    best = models.BooleanField(verbose_name=" بهترین مقالات",default=False)
     def __str__(self):
         return self.title
     class Meta:

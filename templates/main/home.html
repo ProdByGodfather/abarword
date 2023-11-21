@@ -1,6 +1,137 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block 'content' %}
+
+<div class="row">
+
+    <!-- Posts -->
+    <div class="col-lg-8 blog__content">
+
+        <!-- Latest News -->
+        <section class="section tab-post mb-16">
+            <div class="title-wrap ">
+                <h3 class="section-title">آخرین عنوان ها</h3>
+            </div>
+
+            <!-- tab content -->
+            <div class="tabs__content tabs__content-trigger tab-post__tabs-content">
+
+                
+                <div class="tabs__content-pane tabs__content-pane--active" id="tab-all">
+                    <div class="row card-row">
+                        {% for i in last_posts %} 
+                        <div class="col-md-6">
+                            <article class="entry card">
+                                <div class="entry__img-holder card__img-holder">
+                                    <a href="single-post.html">
+                                        <div class="thumb-container thumb-70">
+                                            <img src="{% if i.image.url == '' %}{% static '/img/empty.png' %}{% else %}{{ i.image.url }}{% endif %}" class="entry__img lazyloaded" alt="">
+                                        </div>
+                                    </a>
+                                    <a href="#" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--violet">{{ i.category.title }}</a>
+                                </div>
+
+                                <div class="entry__body card__body">
+                                    <div class="entry__header">
+
+                                        <h2 class="entry__title">
+                                            <a href="single-post.html">{{ i.title }}</a>
+                                        </h2>
+                                        <ul class="entry__meta">
+                                            
+                                            <li class="entry__meta-date">
+                                                {{ i.date }}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="entry__excerpt">
+                                        <p>{{ i.body.html|safe }}</p>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div> <!-- end pane 1 -->
+                
+
+            </div> <!-- end tab content -->
+        </section> <!-- end latest news -->
+
+    </div> <!-- end posts -->
+
+    <!-- Sidebar -->
+    <aside class="col-lg-4 sidebar sidebar--1 sidebar--right">
+
+        <!-- Widget Categories -->
+        <aside class="widget widget_categories">
+            <h4 class="widget-title">دسته بندی نوشته ها</h4>
+            <ul>
+                <li><a href="categories.html">تکنولوژی <span class="categories-count">۵</span></a></li>
+                <li><a href="categories.html">فرهنگ و هنر <span class="categories-count">۷</span></a></li>
+                <li><a href="categories.html">موبایل و گجت <span class="categories-count">۵</span></a></li>
+                <li><a href="categories.html">کتاب <span class="categories-count">۸</span></a></li>
+                <li><a href="categories.html">سامت و زیبایی <span class="categories-count">۱۰</span></a></li>
+                <li><a href="categories.html">سبک زندگی <span class="categories-count">۶</span></a></li>
+            </ul>
+        </aside> <!-- end widget categories -->
+
+        <!-- Widget Recommended (Rating) -->
+        <aside class="widget widget-rating-posts">
+            <h4 class="widget-title">منتخب سردبیر</h4>
+            <article class="entry">
+                <div class="entry__img-holder">
+                    <a href="single-post.html">
+                        <div class="thumb-container thumb-60">
+                            <img data-src="img/content/thumb/post-9.jpg" src="img/content/thumb/post-9.jpg" class="entry__img lazyloaded" alt="">
+                        </div>
+                    </a>
+                </div>
+
+                <div class="entry__body">
+                    <div class="entry__header">
+
+                        <h2 class="entry__title">
+                            <a href="single-post.html">بهترین کتاب‌های کودک و نوجوان برای تربیت فرزندان موفق</a>
+                        </h2>
+                        <ul class="entry__meta">
+                            
+                            <li class="entry__meta-date">
+                                ۴ اردیبهشت ۱۳۹۸
+                            </li>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </article>
+            <article class="entry">
+                <div class="entry__img-holder">
+                    <a href="single-post.html">
+                        <div class="thumb-container thumb-60">
+                            <img data-src="img/content/thumb/post-8.jpg" src="img/content/thumb/post-8.jpg" class="entry__img lazyloaded" alt="">
+                        </div>
+                    </a>
+                </div>
+
+                <div class="entry__body">
+                    <div class="entry__header">
+
+                        <h2 class="entry__title">
+                            <a href="single-post.html">گوشی تاشو هواوی میت ایکس در تاریخ مقرر عرضه می‌شود</a>
+                        </h2>
+                        <ul class="entry__meta">
+                            
+                            <li class="entry__meta-date">
+                                ۴ اردیبهشت ۱۳۹۸
+                            </li>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </article>
+        </aside> <!-- end widget recommended (rating) -->
+    </aside>
+</div>
 
 
 {% endblock %}
