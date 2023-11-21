@@ -14,7 +14,7 @@ class Category(models.Model):
         verbose_name = "دسته بندی"
 
 
-
+# posts class
 class Posts(models.Model):
     title = models.CharField(verbose_name="موضوع", max_length=50)
     slug = models.SlugField(verbose_name="آدرس", max_length=50,unique=True)
@@ -30,3 +30,11 @@ class Posts(models.Model):
         verbose_name_plural = 'مقالات'
         verbose_name = "مقاله"
 
+# news
+class News(models.Model):
+    description = models.TextField(verbose_name="متن خبر",max_length=300)
+    def __str__(self):
+        return self.description
+    class Meta:
+        verbose_name_plural = 'اخبار'
+        verbose_name = "خبر"

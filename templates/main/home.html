@@ -1,5 +1,33 @@
 {% extends "base.html" %}
 {% load static %}
+
+{% block title %}
+    Abarword | Home Page
+{% endblock  %}
+    
+{% block new %}
+<div class="container">
+    <div class="trending-now">
+        <span class="trending-now__label">
+            <i class="ui-flash"></i>
+            خبرهای داغ</span>
+        <div class="newsticker">
+            <ul class="newsticker__list">
+            {% for i in news %}
+            <li class="newsticker__item"><a  class="newsticker__item-url">{{ i.description }}</a></li>
+            {% endfor %}    
+            </ul>
+        </div>
+        <div class="newsticker-buttons">
+            <button class="newsticker-button newsticker-button--next" id="newsticker-button--next" aria-label="previous article"><i class="ui-arrow-left"></i></button>
+            <button class="newsticker-button newsticker-button--prev" id="newsticker-button--prev" aria-label="next article"><i class="ui-arrow-right"></i></button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
 {% block 'content' %}
 
 <div class="row">
@@ -65,14 +93,11 @@
 
         <!-- Widget Categories -->
         <aside class="widget widget_categories">
-            <h4 class="widget-title">دسته بندی نوشته ها</h4>
+            <h4 class="widget-title">دسته بندی مقالات</h4>
             <ul>
-                <li><a href="categories.html">تکنولوژی <span class="categories-count">۵</span></a></li>
-                <li><a href="categories.html">فرهنگ و هنر <span class="categories-count">۷</span></a></li>
-                <li><a href="categories.html">موبایل و گجت <span class="categories-count">۵</span></a></li>
-                <li><a href="categories.html">کتاب <span class="categories-count">۸</span></a></li>
-                <li><a href="categories.html">سامت و زیبایی <span class="categories-count">۱۰</span></a></li>
-                <li><a href="categories.html">سبک زندگی <span class="categories-count">۶</span></a></li>
+                {% for i in category %}
+                    <li><a href="categories.html">{{ i.title }}</a></li>
+                {% endfor %}
             </ul>
         </aside> <!-- end widget categories -->
 

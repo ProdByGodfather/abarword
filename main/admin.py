@@ -12,6 +12,9 @@ class PostsAdmin(admin.ModelAdmin):
     list_filter = ['date','best']
     search_fields = ['title','body']
 
+class NewsAdmin(admin.ModelAdmin):
+    search_fildes = ['description']
 
 admin.site.register(models.Category,CategoryAdmin)
 admin.site.register(models.Posts,PostsAdmin)
+admin.site.register(models.News,NewsAdmin)
