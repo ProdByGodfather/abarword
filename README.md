@@ -6,11 +6,13 @@ The initial version of Ebrord news base was released on `2/11/1300` with `asp.ne
 
 ## for run
 
-1. install `requirements.txt` file with this command.
+1. install requirements.txt file with this command.
+
     ```
         pip install requirements.txt
     ```
 2. run the project with this command.
+
     ```
         python manage.py runserver
     ```
