@@ -31,3 +31,16 @@ def search(request):
         'q':s
     }
     return render(request,'main/search.html',context)
+
+def all(request):
+    posts = models.Posts.objects.all().order_by('-date')
+    context = {
+        'post':posts
+    }
+    return render(request,'main/all.html',context)
+
+def category(request,slug):
+    cate = models.Category.objects.get(slug=slug)
+    posts = models.Posts.objects.filter(category=cate)
+
+    return render(request,'main/all.html',{'post':posts,'c':cate})

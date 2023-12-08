@@ -52,7 +52,7 @@
                         <article class="entry mb-0">
 
                             <div class="single-post__entry-header entry__header">
-                                <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--green">{{ post.category.title }}</a>
+                                <a href="{% url 'category' i.slug %}" class="entry__meta-category entry__meta-category--label entry__meta-category--green">{{ post.category.title }}</a>
                                 <h1 class="single-post__entry-title">
                                     {{ post.title }}
                                 </h1>
@@ -129,7 +129,7 @@
             <h4 class="widget-title">دسته بندی مقالات</h4>
             <ul>
                 {% for i in category %}
-                    <li><a href="categories.html">{{ i.title }}</a></li>
+                    <li><a href="{% url 'category' i.slug %}">{{ i.title }}</a></li>
                 {% endfor %}
             </ul>
         </aside> <!-- end widget categories -->

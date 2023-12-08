@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-	search
+	posts {{ c.title }}
 {% endblock %}
 
 {% block content %}
@@ -12,14 +12,14 @@
 
                 <!-- Posts -->
                 <div class="col-lg-8 blog__content mb-72">
-                    <h1 class="page-title">نتایج جستجو برای: {{ q }}</h1>
 
-                    {% for i in search %}
+
+                    {% for i in post %}
                     	<article class="entry card post-list">
                         <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url({{ i.image.url }})">
                             <a href="{% url 'detail' i.slug %}" class="thumb-url"></a>
                             <img src="{{ i.image.url }}" alt="{{ i.title }}" class="entry__img d-none">
-                            <a href="{% url 'category' i.slug %}" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--blue">{{ i.category.title }}</a>
+                            <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--blue">{{ i.category.title }}</a>
                         </div>
 
                         <div class="entry__body post-list__body card__body">
@@ -91,4 +91,8 @@
 
             </div> <!-- end content -->
         </div>
+{% endblock %}
+
+{% block post_active %}
+	active
 {% endblock %}

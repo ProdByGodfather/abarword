@@ -61,7 +61,7 @@
                     <button class="sidenav__menu-toggle" aria-haspopup="true" aria-label="Open dropdown"><i class="ui-arrow-down"></i></button>
                     <ul class="sidenav__menu-dropdown">
                         {% for i in category %}
-                        	<li><a href="about.html" class="sidenav__menu-url">{{ i.title }}</a></li>
+                        	<li><a href="{% url 'category' i.slug %}" class="sidenav__menu-url">{{ i.title }}</a></li>
                         {% endfor %}
 
                     </ul>
@@ -69,7 +69,7 @@
 
                 <!-- Categories -->
                 <li>
-                    <a href="#" class="sidenav__menu-url">همه مقالات</a>
+                    <a href="{% url 'all' %}" class="sidenav__menu-url">همه مقالات</a>
                 </li>
                 <li>
                     <a href="#" class="sidenav__menu-url">درباره ما</a>
@@ -121,13 +121,13 @@
                                 <li class="{% block post_active %}
                                 	
                                 {% endblock %}">
-                                    <a href="index.html">همه مقالات</a>
+                                    <a href="{% url 'all' %}">همه مقالات</a>
                                 </li>
                                 <li class="nav__dropdown">
                                     <a href="#">دسته بندی مقالات</a>
                                      <ul class="nav__dropdown-menu">
                                         {% for i in category %}
-                                        	<li><a href="about.html">{{ i.title }}</a></li>
+                                        	<li><a href="{% url 'category' i.slug %}">{{ i.title }}</a></li>
                                         {% endfor %}
 
                                     </ul>
