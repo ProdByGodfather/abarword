@@ -57,45 +57,31 @@
                     <a href="#" class="sidenav__menu-url">صفحه اصلی</a>
                 </li>
                 <li>
-                    <a href="#" class="sidenav__menu-url">صفحات</a>
+                    <a href="#" class="sidenav__menu-url">دسته بندی مقالات</a>
                     <button class="sidenav__menu-toggle" aria-haspopup="true" aria-label="Open dropdown"><i class="ui-arrow-down"></i></button>
                     <ul class="sidenav__menu-dropdown">
-                        <li><a href="about.html" class="sidenav__menu-url">درباره ما</a></li>
-                        <li><a href="contact.html" class="sidenav__menu-url">تماس با ما</a></li>
-                        <li><a href="search-results.html" class="sidenav__menu-url">نتایج جستجو</a></li>
-                        <li><a href="categories.html" class="sidenav__menu-url">دسته بندی مطالب</a></li>
-                        <li><a href="single-post.html" class="sidenav__menu-url">نمایش مطلب</a></li>
-                        <li><a href="404.html" class="sidenav__menu-url">404</a></li>
+                        {% for i in category %}
+                        	<li><a href="about.html" class="sidenav__menu-url">{{ i.title }}</a></li>
+                        {% endfor %}
+
                     </ul>
                 </li>
 
                 <!-- Categories -->
                 <li>
-                    <a href="#" class="sidenav__menu-url">تکنولوژی</a>
+                    <a href="#" class="sidenav__menu-url">همه مقالات</a>
                 </li>
                 <li>
-                    <a href="#" class="sidenav__menu-url">زیبایی و سلامت</a>
-                </li>
-                <li>
-                    <a href="#" class="sidenav__menu-url">موبایل</a>
+                    <a href="#" class="sidenav__menu-url">درباره ما</a>
                 </li>
             </ul>
         </nav>
 
         <div class="socials sidenav__socials">
-            <a class="social social-facebook" href="#" target="_blank" aria-label="facebook">
-                <i class="ui-facebook"></i>
+            <a class="social social-facebook" href="https://github.com/ProdByGodfather" target="_blank" aria-label="github">
+                <i class="ui-github"></i>
             </a>
-            <a class="social social-twitter" href="#" target="_blank" aria-label="twitter">
-                <i class="ui-twitter"></i>
-            </a>
-            <a class="social social-google-plus" href="#" target="_blank" aria-label="google">
-                <i class="ui-google"></i>
-            </a>
-            <a class="social social-youtube" href="#" target="_blank" aria-label="youtube">
-                <i class="ui-youtube"></i>
-            </a>
-            <a class="social social-instagram" href="#" target="_blank" aria-label="instagram">
+             <a class="social social-instagram" href="https://instagram.com/prodbygodfather" target="_blank" aria-label="instagram">
                 <i class="ui-instagram"></i>
             </a>
         </div>
@@ -103,33 +89,6 @@
 
     <main class="main oh" id="main">
 
-        <!-- Top Bar -->
-        <div class="top-bar d-none d-lg-block">
-            <div class="container">
-                <div class="row">
-
-                    <!-- Top menu -->
-                    <div class="col-lg-6">
-                        <ul class="top-menu">
-                            <li><a href="#">درباره ما</a></li>
-                            <li><a href="#">تبلیغات</a></li>
-                            <li><a href="#">تماس با ما</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- Socials -->
-                    <div class="col-lg-6">
-                        <div class="socials nav__socials socials--nobase socials--white justify-content-start">
-                        
-                            <a class="social social-instagram" href="https://instagram.com/prodbygodfather/" target="_blank" aria-label="instagram">
-                                <i class="ui-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div> <!-- end top bar -->
 
         <!-- Navigation -->
         <header class="nav">
@@ -173,18 +132,14 @@
 
                                     </ul>
                                 </li>
+                                <li class="{% block about_active %}
 
-                                <li class="nav__dropdown">
-                                    <a href="#">صفحات</a>
-                                    <ul class="nav__dropdown-menu">
-                                        <li><a href="about.html">درباره ما</a></li>
-                                        <li><a href="contact.html">تماس با ما</a></li>
-                                        <li><a href="search-results.html">نتایج جستجو</a></li>
-                                        <li><a href="categories.html">دسته بندی مطالب</a></li>
-                                        <li><a href="single-post.html">نمایش مطلب</a></li>
-                                        <li><a href="404.html">404</a></li>
-                                    </ul>
+                                {% endblock %}">
+                                    <a href="index.html">درباره ما</a>
                                 </li>
+
+
+
 
 
                             </ul> <!-- end menu -->
@@ -249,7 +204,8 @@
                                     </p>
                                 <div class="socials socials--large socials--rounded mb-24">
                                     
-                                    <a href="https://instagram.com/prodbygodfather/" class="social social-instagram" aria-label="instagram"><i class="ui-instagram"></i></a>
+                                    <a href="https://instagram.com/prodbygodfather/" target="_blank" class="social social-instagram" aria-label="instagram"><i class="ui-instagram"></i></a>
+                                    <a href="https://github.com/ProdByGodfather/" target="_blank" class="social social-facebook" aria-label="github"><i class="ui-github"></i></a>
                                 </div>
                             </aside>
                         </div>
