@@ -54,7 +54,7 @@
         <nav class="sidenav__menu-container">
             <ul class="sidenav__menu" role="menubar">
                 <li>
-                    <a href="#" class="sidenav__menu-url">صفحه اصلی</a>
+                    <a href="{% url 'home' %}" class="sidenav__menu-url">صفحه اصلی</a>
                 </li>
                 <li>
                     <a href="#" class="sidenav__menu-url">دسته بندی مقالات</a>
@@ -105,7 +105,7 @@
                         </button>
 
                         <!-- Logo -->
-                        <a href="index.html" class="logo">
+                        <a href="{% url 'home' %}" class="logo">
                             <img class="logo__img" src="{% static 'img/logo_default.png' %}" alt="logo">
                         </a>
 
@@ -116,7 +116,7 @@
                                 <li class="{% block home_active %}
                                 	
                                 {% endblock %}">
-                                    <a href="index.html">صفحه اصلی</a>
+                                    <a href="{% url 'home' %}">صفحه اصلی</a>
                                 </li>
                                 <li class="{% block post_active %}
                                 	
@@ -182,7 +182,7 @@
 
         <div class="main-container container pt-24" id="main-container">
 
-            {% block 'content' %}
+            {% block content %}
 
             {% endblock %}
 
@@ -194,7 +194,7 @@
 
                         <div class="col-lg-5 col-md-6">
                             <aside class="widget widget-logo">
-                                <a href="index.html">
+                                <a href="{% url 'home' %}">
                                     <img src="{% static 'img/logo_default_white.png' %}"  class="logo__img" alt="">
                                 </a>
                                 <p class="copyright">
