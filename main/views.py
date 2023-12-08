@@ -44,3 +44,7 @@ def category(request,slug):
     posts = models.Posts.objects.filter(category=cate)
 
     return render(request,'main/all.html',{'post':posts,'c':cate})
+
+
+def about(request):
+    return render(request,"main/about.html")

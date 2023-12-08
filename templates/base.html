@@ -72,7 +72,7 @@
                     <a href="{% url 'all' %}" class="sidenav__menu-url">همه مقالات</a>
                 </li>
                 <li>
-                    <a href="#" class="sidenav__menu-url">درباره ما</a>
+                    <a href="{% url 'about' %}" class="sidenav__menu-url">درباره ما</a>
                 </li>
             </ul>
         </nav>
@@ -135,7 +135,7 @@
                                 <li class="{% block about_active %}
 
                                 {% endblock %}">
-                                    <a href="index.html">درباره ما</a>
+                                    <a href="{% url 'about' %}">درباره ما</a>
                                 </li>
 
 

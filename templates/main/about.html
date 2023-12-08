@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block about_active %}
+	active
+{% endblock %}
+
+{% block title %}
+	About | AbarWord
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <ul class="breadcrumbs">
+            <li class="breadcrumbs__item">
+                <a href="{% url 'home' %}" class="breadcrumbs__url">خانه</a>
+            </li>
+            <li class="breadcrumbs__item breadcrumbs__item--current">
+                درباره ما
+            </li>
+        </ul>
+    </div>
+    <div class="main-container container" id="main-container">
+            <!-- post content -->
+            <div class="blog__content mb-72">
+                <h1 class="page-title">درباره ما</h1>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="entry__article" dir="ltr" style="text-align: left">
+                            <p>A simple and specific example of a news website for students to practice and learn at an introductory level of Django.
+                                <br>
+
+The initial version of Ebrord news base was released on 2/11/1400 with asp.net mvc and is known as adopted child. Now it is provided to you as an optimized version with rewritten Django, in the form of Django framework in a simple and preliminary way.</p>
+                             <a href="https://github.com/prodbygodfather/" target="_blank">Prod By Godfather</a> With ❤
+                            <br>
+                            <a href="https://abarvision.ir/" target="_blank">AbarVision Company</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- end post content -->
+        </div>
+
+
+{% endblock %}
