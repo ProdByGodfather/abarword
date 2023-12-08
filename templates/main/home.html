@@ -107,7 +107,7 @@
             {% for i in best_posts %}
             <article class="entry">
                 <div class="entry__img-holder">
-                    <a href="single-post.html">
+                    <a href="{% url 'detail' i.slug %}">
                         <div class="thumb-container thumb-60">
                             <img src="{% if i.image.url == '' %}{% static '/img/empty.png' %}{% else %}{{ i.image.url }}{% endif %}" class="entry__img lazyloaded" alt="">
                         </div>
@@ -118,7 +118,7 @@
                     <div class="entry__header">
 
                         <h2 class="entry__title">
-                            <a href="single-post.html">{{ i.title }}</a>
+                            <a href="{% url 'detail' i.slug %}">{{ i.title }}</a>
                         </h2>
                         <ul class="entry__meta">
                             

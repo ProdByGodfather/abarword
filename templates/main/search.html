@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	search
+{% endblock %}
+
+{% block content %}
+	<div class="main-container container pt-40" id="main-container">
+
+            <!-- Content -->
+            <div class="row">
+
+                <!-- Posts -->
+                <div class="col-lg-8 blog__content mb-72">
+                    <h1 class="page-title">نتایج جستجو برای: {{ q }}</h1>
+
+                    {% for i in search %}
+                    	<article class="entry card post-list">
+                        <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url({{ i.image.url }})">
+                            <a href="{% url 'detail' i.slug %}" class="thumb-url"></a>
+                            <img src="{{ i.image.url }}" alt="{{ i.title }}" class="entry__img d-none">
+                            <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--blue">{{ i.category.title }}</a>
+                        </div>
+
+                        <div class="entry__body post-list__body card__body">
+                            <div class="entry__header">
+                                <h2 class="entry__title">
+                                    <a href="{% url 'detail' i.slug %}">{{ i.title }}</a>
+                                </h2>
+                                <ul class="entry__meta">
+
+                                    <li class="entry__meta-date">
+                                        {{ i.date }}
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="entry__excerpt">
+                                <p>{{ i.description }}</p>
+                            </div>
+                        </div>
+                    </article>
+                    {% endfor %}
+
+
+                </div> <!-- end posts -->
+
+                <!-- Sidebar -->
+                <aside class="col-lg-4 sidebar sidebar--right">
+
+<aside class="widget widget-popular-posts">
+                        <h4 class="widget-title">محبوب ترین مقالات</h4>
+                        <ul class="post-list-small">
+                            {% for i in best_posts %}
+                                    <li class="post-list-small__item">
+                                        <article class="post-list-small__entry clearfix">
+                                            <div class="post-list-small__img-holder">
+                                                <div class="thumb-container thumb-100">
+                                                    <a href="{% url 'detail' i.slug %}">
+                                                        <img data-src="{{ i.image.url }}" src="{{ i.image.url }}" alt="" class="post-list-small__img--rounded lazyload">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="post-list-small__body">
+                                                <h3 class="post-list-small__entry-title">
+                                                    <a href="{% url 'detail' i.slug %}">{{ i.title }}</a>
+                                                </h3>
+                                                <ul class="entry__meta">
+                                                    {{ i.description }}<br>
+                                                    <li class="entry__meta-date">
+                                                        {{ i.date }}
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </article>
+                                    </li>
+
+                                    {% endfor %}
+                        </ul>
+                    </aside>
+                 <aside class="widget widget_categories">
+            <h4 class="widget-title">دسته بندی مقالات</h4>
+            <ul>
+                {% for i in category %}
+                    <li><a href="categories.html">{{ i.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </aside>
+                    <!-- Widget Ad 300 -->
+
+                </aside> <!-- end sidebar -->
+
+            </div> <!-- end content -->
+        </div>
+{% endblock %}

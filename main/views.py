@@ -22,3 +22,12 @@ def detail(request,slug):
         'post':post
     }
     return render(request,'main/detail.html',context)
+
+def search(request):
+    s = request.GET.get("q")
+    search = models.Posts.objects.filter(description__icontains=s)
+    context = {
+        'search':search,
+        'q':s
+    }
+    return render(request,'main/search.html',context)

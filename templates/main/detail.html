@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block title %}
+    AbarWord | {{ post.title }}
+{% endblock %}
+
 {% block new %}
     <div class="container">
     <div class="trending-now">
@@ -97,14 +101,14 @@
                                         <article class="post-list-small__entry clearfix">
                                             <div class="post-list-small__img-holder">
                                                 <div class="thumb-container thumb-100">
-                                                    <a href="single-post.html">
+                                                    <a href="{% url 'detail' i.slug %}">
                                                         <img data-src="{{ i.image.url }}" src="{{ i.image.url }}" alt="" class="post-list-small__img--rounded lazyload">
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="post-list-small__body">
                                                 <h3 class="post-list-small__entry-title">
-                                                    <a href="single-post.html">{{ i.title }}</a>
+                                                    <a href="{% url 'detail' i.slug %}">{{ i.title }}</a>
                                                 </h3>
                                                 <ul class="entry__meta">
                                                     {{ i.description }}<br>

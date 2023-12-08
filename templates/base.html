@@ -154,8 +154,8 @@
                                     <i class="ui-search nav__search-trigger-icon"></i>
                                 </a>
                                 <div class="nav__search-box" id="nav__search-box">
-                                    <form class="nav__search-form">
-                                        <input type="text" placeholder="جستجو مقالات" class="nav__search-input">
+                                    <form class="nav__search-form" method="get" action="{% url 'search' %}">
+                                        <input type="text" name="q" placeholder="جستجو مقالات" class="nav__search-input">
                                         <button type="submit" class="search-button btn btn-lg btn-color btn-button">
                                             <i class="ui-search nav__search-icon"></i>
                                         </button>
@@ -220,14 +220,14 @@
                                         <article class="post-list-small__entry clearfix">
                                             <div class="post-list-small__img-holder">
                                                 <div class="thumb-container thumb-100">
-                                                    <a href="single-post.html">
+                                                    <a href="{% url 'detail' i.slug %}">
                                                         <img data-src="{{ i.image.url }}" src="{{ i.image.url }}" alt="" class="post-list-small__img--rounded lazyload">
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="post-list-small__body">
                                                 <h3 class="post-list-small__entry-title">
-                                                    <a href="single-post.html">{{ i.title }}</a>
+                                                    <a href="{% url 'detail' i.slug %}">{{ i.title }}</a>
                                                 </h3>
                                                 <ul class="entry__meta">
                                                     {{ i.description }}<br>
