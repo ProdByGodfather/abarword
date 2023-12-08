@@ -34,8 +34,10 @@ def search(request):
 
 def all(request):
     posts = models.Posts.objects.all().order_by('-date')
+
     context = {
-        'post':posts
+        'post':posts,
+        'c':"همه مقالات"
     }
     return render(request,'main/all.html',context)
 
