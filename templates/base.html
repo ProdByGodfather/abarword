@@ -154,89 +154,24 @@
                         <nav class="flex-child nav__wrap d-none d-lg-block">
                             <ul class="nav__menu">
 
-                                <li class="active">
+                                <li class="{% block home_active %}
+                                	
+                                {% endblock %}">
                                     <a href="index.html">صفحه اصلی</a>
                                 </li>
-
+                                <li class="{% block post_active %}
+                                	
+                                {% endblock %}">
+                                    <a href="index.html">همه مقالات</a>
+                                </li>
                                 <li class="nav__dropdown">
-                                    <a href="#">تکنولوژی</a>
-                                    <ul class="nav__dropdown-menu nav__megamenu">
-                                        <li>
-                                            <div class="nav__megamenu-wrap">
-                                                <div class="row">
+                                    <a href="#">دسته بندی مقالات</a>
+                                     <ul class="nav__dropdown-menu">
+                                        {% for i in category %}
+                                        	<li><a href="about.html">{{ i.title }}</a></li>
+                                        {% endfor %}
 
-                                                    <div class="col nav__megamenu-item">
-                                                        <article class="entry">
-                                                            <div class="entry__img-holder">
-                                                                <a href="single-post.html">
-                                                                    <img src="img/content/thumb/post-1.jpg" alt="" class="entry__img">
-                                                                </a>
-                                                                <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--violet">تکنولوژی</a>
-                                                            </div>
-
-                                                            <div class="entry__body">
-                                                                <h2 class="entry__title">
-                                                                    <a href="single-post.html">چرا لانچرهای اندروید دیگر محبوبیت گذشته را ندارند؟</a>
-                                                                </h2>
-                                                            </div>
-                                                        </article>
-                                                    </div>
-
-                                                    <div class="col nav__megamenu-item">
-                                                        <article class="entry">
-                                                            <div class="entry__img-holder">
-                                                                <a href="single-post.html">
-                                                                    <img src="img/content/thumb/post-2.jpg" alt="" class="entry__img">
-                                                                </a>
-                                                                <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--purple">تکنولوژی</a>
-                                                            </div>
-
-                                                            <div class="entry__body">
-                                                                <h2 class="entry__title">
-                                                                    <a href="single-post.html">نمایشگر وان پلاس ۷ قرار است ما را شگفت‌زده کند!</a>
-                                                                </h2>
-                                                            </div>
-                                                        </article>
-                                                    </div>
-
-                                                    <div class="col nav__megamenu-item">
-                                                        <article class="entry">
-                                                            <div class="entry__img-holder">
-                                                                <a href="single-post.html">
-                                                                    <img src="img/content/thumb/post-3.jpg" alt="" class="entry__img">
-                                                                </a>
-                                                                <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--blue">تکنولوژی</a>
-                                                            </div>
-
-                                                            <div class="entry__body">
-                                                                <h2 class="entry__title">
-                                                                    <a href="single-post.html">با دو هزار یورو، می‌توان چه محصولاتی دیگری به جای گلکسی فولد خرید؟</a>
-                                                                </h2>
-                                                            </div>
-                                                        </article>
-                                                    </div>
-
-                                                    <div class="col nav__megamenu-item">
-                                                        <article class="entry">
-                                                            <div class="entry__img-holder">
-                                                                <a href="single-post.html">
-                                                                    <img src="img/content/thumb/post-4.jpg" alt="" class="entry__img">
-                                                                </a>
-                                                                <a href="categories.html" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--green">تکنولوژی</a>
-                                                            </div>
-
-                                                            <div class="entry__body">
-                                                                <h2 class="entry__title">
-                                                                    <a href="single-post.html">۶ ویژگی برتر رابط کاربری One UI سامسونگ</a>
-                                                                </h2>
-                                                            </div>
-                                                        </article>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul> <!-- end megamenu -->
+                                    </ul>
                                 </li>
 
                                 <li class="nav__dropdown">
@@ -322,58 +257,34 @@
 
                         <div class="col-lg-4 col-md-6">
                             <aside class="widget widget-popular-posts">
-                                <h4 class="widget-title">محبوب ترین مقالات</h4>
+                                <h4 class="widget-title">جدید ترین مقالات</h4>
                                 <ul class="post-list-small">
+                                    {% for i in new_posts %}
                                     <li class="post-list-small__item">
                                         <article class="post-list-small__entry clearfix">
                                             <div class="post-list-small__img-holder">
                                                 <div class="thumb-container thumb-100">
                                                     <a href="single-post.html">
-                                                        <img data-src="{% static 'img/content/thumb/post-8.jpg' %}" src="img/empty.png" alt="" class="post-list-small__img--rounded lazyload">
+                                                        <img data-src="{{ i.image.url }}" src="{{ i.image.url }}" alt="" class="post-list-small__img--rounded lazyload">
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="post-list-small__body">
                                                 <h3 class="post-list-small__entry-title">
-                                                    <a href="single-post.html">گوشی تاشو هواوی میت ایکس در تاریخ مقرر عرضه می‌شود</a>
+                                                    <a href="single-post.html">{{ i.title }}</a>
                                                 </h3>
                                                 <ul class="entry__meta">
-                                                    <li class="entry__meta-author">
-                                                        <span>نویسنده:</span>
-                                                        <a href="#">بهرامی راد</a>
-                                                    </li>
+                                                    {{ i.description }}<br>
                                                     <li class="entry__meta-date">
-                                                        ۴ اردیبهشت ۱۳۹۸
+                                                        {{ i.date }}
                                                     </li>
                                                 </ul>
                                             </div>
                                         </article>
                                     </li>
-                                    <li class="post-list-small__item">
-                                        <article class="post-list-small__entry clearfix">
-                                            <div class="post-list-small__img-holder">
-                                                <div class="thumb-container thumb-100">
-                                                    <a href="single-post.html">
-                                                        <img data-src="{% static 'img/content/thumb/post-2.jpg' %}" src="{% static 'img/empty.png'%}" alt="" class="post-list-small__img--rounded lazyload">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="post-list-small__body">
-                                                <h3 class="post-list-small__entry-title">
-                                                    <a href="single-post.html">نمایشگر وان پلاس ۷ قرار است ما را شگفت‌زده کند!</a>
-                                                </h3>
-                                                <ul class="entry__meta">
-                                                    <li class="entry__meta-author">
-                                                        <span>نویسنده:</span>
-                                                        <a href="#">بهرامی راد</a>
-                                                    </li>
-                                                    <li class="entry__meta-date">
-                                                        ۴ اردیبهشت ۱۳۹۸
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </article>
-                                    </li>
+
+                                    {% endfor %}
+
                                 </ul>
                             </aside>
                         </div>
