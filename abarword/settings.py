@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-kp+)jq1-mu3tfba)+2(l31pr&&0&0-4ud9050ie0(4mo%bi^c6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.abarword.ictnegar.ir/','abarword.ictnegar.ir/']
 
 
 # Application definition
@@ -123,8 +123,8 @@ USE_TZ = True
 
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
-
+# STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = 'static/' 
 
 # Media Settings
 MEDIA_ROOT = BASE_DIR / 'media' # 'data' is my media folder

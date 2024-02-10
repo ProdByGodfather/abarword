@@ -9,7 +9,7 @@ The initial version of Ebrord news base was released on `2/11/1400` with `asp.ne
 1. install requirements.txt file with this command.
 
     ```
-        pip install requirements.txt
+        pip install -r requirements.txt
     ```
 2. run the project with this command.
 
