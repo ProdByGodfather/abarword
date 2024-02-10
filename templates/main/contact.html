@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block contact_active %}
+	active
+{% endblock %}
+
+{% block title %}
+	contact US | AbarWord
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <ul class="breadcrumbs">
+            <li class="breadcrumbs__item">
+                <a href="{% url 'home' %}" class="breadcrumbs__url">خانه</a>
+            </li>
+            <li class="breadcrumbs__item breadcrumbs__item--current">
+                تماس با ما
+            </li>
+        </ul>
+    </div>
+    <div class="main-container container" id="main-container">
+            <!-- post content -->
+            <div class="blog__content mb-72">
+                <h1 class="page-title">تماس با ما</h1>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+
+                        {% if messages %}
+                            <ul class='messages'>
+                                {% for message in messages %}
+                                    <div class='alert alert-success'>
+                                        <strong>{% if message.tags %}{{ message.tag }}{% endif %}</strong>
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+
+                        <h4>با ما تماس بگیرید</h4>
+                        <p>منتظر دریافت نظرات و انتقادات شما هستیم و همه آن ها را برسی میکنیم.</p>
+                        <ul class="contact-items">
+                            <li class="contact-item">
+                                <address>اصفهان، خیابان جی ، خیابن اَبَر، اَبَرپردازش</address>
+                            </li>
+                            </ul>
+
+                        <!-- Contact Form -->
+                        <form id="contact-form" class="contact-form mt-30 mb-30" method="post" action=".">
+                            {% csrf_token %}
+                            <div class="contact-name">
+                                <label for="name">نام <abbr title="required" class="required">*</abbr></label>
+                                <input name="name" id="name" required type="text">
+                            </div>
+                            <div class="contact-email">
+                                <label for="email">ایمیل <abbr title="required" class="required">*</abbr></label>
+                                <input name="email" required id="email" type="email">
+                            </div>
+                            
+                            <div class="contact-message">
+                                <label for="message">پیام <abbr title="required" class="required">*</abbr></label>
+                                <textarea id="message" name="message" rows="7" required="required"></textarea>
+                            </div>
+                            <input type="submit" class='btn btn-color btn-lg btn-button' value="ارسال">
+                            
+                        </form>
+
+                    </div>
+                </div>
+            </div> <!-- end post content -->
+        </div>
+
+
+{% endblock %}

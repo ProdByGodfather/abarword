@@ -74,6 +74,10 @@
                 <li>
                     <a href="{% url 'about' %}" class="sidenav__menu-url">درباره ما</a>
                 </li>
+                <li>
+                    <a href="{% url 'contact' %}" class="sidenav__menu-url">تماس با ما</a>
+                </li>
+                
             </ul>
         </nav>
 
@@ -136,6 +140,11 @@
 
                                 {% endblock %}">
                                     <a href="{% url 'about' %}">درباره ما</a>
+                                </li>
+                                <li class="{% block contact_active %}
+
+                                {% endblock %}">
+                                    <a href="{% url 'contact' %}">تماس با ما</a>
                                 </li>
 
 
@@ -247,21 +256,35 @@
 
                         <div class="col-lg-3 col-md-6">
                             <aside class="widget widget_mc4wp_form_widget">
+                                
                                 <h4 class="widget-title">خبرنامه</h4>
                                 <p class="newsletter__text">
                                     <i class="ui-email newsletter__icon"></i>
                                     برای اطلاع از آخرین خبرها مشترک شوید
+                                    <br>
+                                    تا کنون {{ email_count }} نفر عضو شده اند.
                                 </p>
-                                <form class="mc4wp-form" method="post">
+                                <form class="mc4wp-form" action="{% url 'save_mail' %}" method="post">
+                                    {% csrf_token %}
                                     <div class="mc4wp-form-fields">
                                         <div class="form-group">
-                                            <input type="email" name="EMAIL" placeholder="ایمیل" required="">
+                                            <input type="email" name="email" placeholder="ایمیل" required="">
                                         </div>
                                         <div class="form-group">
                                             <input type="submit" class="btn btn-lg btn-color" value="عضویت">
                                         </div>
                                     </div>
                                 </form>
+                                {% if messages %}
+                                    <ul class='messages'>
+                                        {% for message in messages %}
+                                            <div class='alert alert-success'>
+                                                <strong>{% if message.tags %}{{ message.tag }}{% endif %}</strong>
+                                                {{ message }}
+                                            </div>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
                             </aside>
                         </div>
 

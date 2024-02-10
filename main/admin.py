@@ -15,6 +15,12 @@ class PostsAdmin(admin.ModelAdmin):
 class NewsAdmin(admin.ModelAdmin):
     search_fildes = ['description']
 
+class ContactAdmin(admin.ModelAdmin):
+    search_fields = ['email','name','message']
+    list_display = ['email','name']
+
 admin.site.register(models.Category,CategoryAdmin)
 admin.site.register(models.Posts,PostsAdmin)
 admin.site.register(models.News,NewsAdmin)
+admin.site.register(models.Contact,ContactAdmin)
+admin.site.register(models.Emails)

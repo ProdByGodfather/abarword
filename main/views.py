@@ -1,7 +1,9 @@
 # import modules
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from main import models
-
+from django.contrib import messages
 
 # home function returned home page of abarword
 def home(request):
@@ -50,3 +52,33 @@ def category(request,slug):
 
 def about(request):
     return render(request,"main/about.html")
+
+def contact(request):
+    if request.method == "POST":
+        try:
+            email = request.POST.get('email')
+            name = request.POST.get('name')
+            message = request.POST.get('message')
+            models.Contact.objects.create(email=email, name=name, message=message)
+            messages.info(request,'پیغام شما با موفقیت ذخیره شد')
+        except:
+            messages.info(request, 'مشکلی در ذخیره پیغام شما رخ داد، لطفا مجددا تلاش کنید.')
+    
+
+    return render(request, 'main/contact.html')
+
+
+"""
+    این تابع مقدار خروجی خاصی ندارد و فقط ایمیل فرستاده شده توسط متد پست را ذخیره میکند.
+    سپس صفحه خانه و اصلی را بر میگرداند.
+"""
+def save_mail(request):
+    if request.method == 'POST':
+        try:
+            email = request.POST.get('email')
+            models.Emails.objects.create(email=email)
+            messages.info(request,'ایمیل شما با موفقیت ذخیره شد')
+        except:
+            messages.info(request,"مشکلی در ذخیره ایمیل شما پیش آمد.")
+    # redirect to home page ( redirect to home function )
+    return HttpResponseRedirect(reverse_lazy('home'))

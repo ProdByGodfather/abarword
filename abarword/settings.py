@@ -23,11 +23,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-kp+)jq1-mu3tfba)+2(l31pr&&0&0-4ud9050ie0(4mo%bi^c6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['www.abarword.ictnegar.ir/','abarword.ictnegar.ir/']
+# ALLOWED_HOSTS = ['www.abarword.ictnegar.ir/','abarword.ictnegar.ir/']
 
-
+ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
@@ -67,7 +67,8 @@ TEMPLATES = [
                 'main.context_processor.bests',
                 'main.context_processor.category_processor',
                 'main.context_processor.news_processor',
-                'main.context_processor.new_posts'
+                'main.context_processor.new_posts',
+                'main.context_processor.email_count',
             ],
         },
     },
@@ -123,12 +124,25 @@ USE_TZ = True
 
 
 STATIC_URL = 'static/'
-# STATICFILES_DIRS = [BASE_DIR / 'static']
-STATIC_ROOT = 'static/' 
+STATICFILES_DIRS = [BASE_DIR / 'static']
+# STATIC_ROOT = 'static/' 
 
 # Media Settings
 MEDIA_ROOT = BASE_DIR / 'media' # 'data' is my media folder
 MEDIA_URL = '/media/'
+
+
+'''
+    ************* if website going on host *************
+
+STATIC_URL = '/abarstatic/'
+# STATICFILES_DIRS = [BASE_DIR / 'abarstatic']
+STATIC_ROOT = '../abarword/abarstatic/' 
+
+# Media Settings
+MEDIA_URL = '/abarmedia/'
+MEDIA_ROOT = '../abarword.ictnegar.ir/abarmedia/' # 'data' is my media folder
+'''
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

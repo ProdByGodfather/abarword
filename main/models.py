@@ -38,3 +38,22 @@ class News(models.Model):
     class Meta:
         verbose_name_plural = 'اخبار'
         verbose_name = "خبر"
+
+
+class Contact(models.Model):
+    email = models.CharField(verbose_name="ایمیل",max_length=400)
+    name = models.CharField(verbose_name="نام",max_length=200)
+    message = models.TextField(verbose_name='پیغام')
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name_plural = 'تماس ها'
+        verbose_name = "تماس"
+
+class Emails(models.Model):
+    email = models.EmailField(verbose_name="ایمیل",max_length=400, unique=True)
+    def __str__(self):
+        return self.email
+    class Meta:
+        verbose_name_plural = 'ایمیل ها'
+        verbose_name = "ایمیل"
